@@ -38,3 +38,7 @@ Route::get('/caterer/subscriptions/verifyresult','SubscriptionController@verifyr
 // Pricing
 
 Route::get('/caterer/pricing/pricing','PricingController@index');
+
+Route::get('/caterer/pricing/view','PricingController@view');
+
+Route::post('/caterer/pricing/view','PricingController@show');
