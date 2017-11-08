@@ -12,6 +12,10 @@
 */
 
 Route::get('/', function () {
+    return view('/welcome');
+});
+
+Route::get('/caterer/home', function () {
     return view('/caterer/home');
 });
 
@@ -38,3 +42,20 @@ Route::get('/caterer/subscriptions/verifyresult','SubscriptionController@verifyr
 // Pricing
 
 Route::get('/caterer/pricing/pricing','PricingController@index');
+
+Route::get('/caterer/transaction/transaction',function(){
+
+	return view('/caterer/transaction/transaction');
+});
+
+Route::get('/caterer/menu/menu',function(){
+
+	return view('/caterer/menu/menu');
+
+});
+
+Route::get('/user/home',function(){
+
+	return view('/user/home');
+
+});
