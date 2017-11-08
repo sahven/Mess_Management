@@ -6,14 +6,35 @@
 
 @section('content')
 	
-	
-	@foreach($all as $row)
-		<h4>UserID: {{ $row->UserID }} </h4> 
-		<h4>CatererID: {{ $row->CatererID }} </h4>
-		<h4>PlanID: {{ $row->PlanID }} </h4>
-		<hr>
-	@endforeach
-	
+	<div class="container">
+
+	  <h2>Subscription Table</h2>            
+	  
+	  <table class="table table-hover">
+	    
+	    <thead>
+	      <tr>
+	        <th>RollNo</th>
+	        <th>CatererID</th>
+	        <th>PlanID</th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+
+	    @foreach($all as $row)
+		      
+		      <tr>
+		        <td> {{ $row->RollNo }} </td>
+		        <td> {{ $row->CatererID }} </td>
+		        <td> {{ $row->PlanID }} </td>
+		      </tr>
+
+	    @endforeach
+
+	    </tbody>
+	  </table>
+	</div>
 
 @endsection
 

@@ -11,14 +11,18 @@ class Pricing extends Model
     public function showall($request){
 
     	$plan = $request['planid'];
-    	
+    
     	//Here, you have to enter the CatererID of the corresponding Caterer.
     	$show = DB::select("
-			select * from Pricing
-			where PlanID = ?
+			select Timing.Day,Timing.StartTime,Pricing.Price
+            from Timing,Pricing
+			where
+            Timing.TimingID = Pricing.TimingID
+            and
+            PlanID = ?
 			and
 			CatererID = ?
-    		",array(plan,1));
+    		",array($plan,1));
     	
     	return $show;
 

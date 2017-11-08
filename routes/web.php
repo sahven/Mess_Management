@@ -11,6 +11,8 @@
 |
 */
 
+// Caterer routes
+
 Route::get('/', function () {
     return view('/welcome');
 });
@@ -19,7 +21,7 @@ Route::get('/caterer/home', function () {
     return view('/caterer/home');
 });
 
-// Subscriptions
+// Caterer_Subscriptions
 
 Route::get('/caterer/subscriptions/subscriptions','SubscriptionController@index');
 
@@ -39,20 +41,35 @@ Route::post('/caterer/subscriptions/verify','SubscriptionController@verify_subsc
 
 Route::get('/caterer/subscriptions/verifyresult','SubscriptionController@verifyresult');
 
-// Pricing
+// Caterer_Pricing
 
 Route::get('/caterer/pricing/pricing','PricingController@index');
+
+Route::get('/caterer/pricing/view','PricingController@view');
+
+Route::get('/caterer/pricing/change','PricingController@change');
+
+Route::post('/caterer/pricing/view','PricingController@viewresult');
+
+Route::get('/caterer/pricing/viewresult','PricingController@viewresult');
+
+// Caterer_Transaction
+// Yet to implement transaction table.
 
 Route::get('/caterer/transaction/transaction',function(){
 
 	return view('/caterer/transaction/transaction');
 });
 
-Route::get('/caterer/menu/menu',function(){
+// Caterer_Menu
 
-	return view('/caterer/menu/menu');
+Route::get('/caterer/menu/menu','MenuController@index');
 
-});
+Route::get('/caterer/menu/view','MenuController@view');
+
+Route::get('/caterer/menu/change','MenuController@change');
+
+// User
 
 Route::get('/user/home',function(){
 

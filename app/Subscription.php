@@ -12,8 +12,11 @@ class Subscription extends Model
 
     	//Here you have to enter the CatererID of the corresponding caterer.
     	$all = DB::select("
-			select * from Subscribes
-			where CatererID = ?
+			select Diner.RollNo,Subscribes.CatererID,Subscribes.PlanID
+            from Subscribes,Diner
+			where Subscribes.UserID = Diner.UserID
+            and
+            Subscribes.CatererID = ?
     		",array(1));
     	return $all;
 
