@@ -53,6 +53,9 @@ Route::post('/caterer/pricing/view','PricingController@viewresult');
 
 Route::get('/caterer/pricing/viewresult','PricingController@viewresult');
 
+Route::post('/caterer/pricing/change','PricingController@update');
+
+
 // Caterer_Transaction
 // Yet to implement transaction table.
 

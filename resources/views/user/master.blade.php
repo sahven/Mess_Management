@@ -14,7 +14,7 @@
 </head>
 <body>
 	
-	@include('/caterer/nav')
+	@include('/user/nav')
 
 	@yield('content')
 

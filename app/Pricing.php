@@ -27,4 +27,18 @@ class Pricing extends Model
     	return $show;
 
     }
+
+    public function change($request){
+
+        DB::update("
+            update Pricing
+            set Price = ?
+            where 
+            TimingID = ?
+            and 
+            PlanID = ?
+            and
+            CatererID = ?
+            ",array($request['price'],$request['timingid'],$request['planid'],1));
+    }
 }

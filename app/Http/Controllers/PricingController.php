@@ -33,4 +33,12 @@ class PricingController extends Controller
     	return view('/caterer/pricing/viewresult',compact('all'));
 
     }
+
+    public function update(){
+
+    	$price = new Pricing;
+    	$price->change(request()->all());
+    	return redirect('/caterer/pricing/viewresult');
+    	
+    }
 }

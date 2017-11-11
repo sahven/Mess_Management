@@ -1,4 +1,4 @@
-@extends('/caterer/master')
+@extends('/user/master')
 
 @section('title')
 	HomePage
@@ -6,10 +6,13 @@
 
 @section('content')
 	
-	<a href="/"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;margin-left: 26%;"><span>View Profile</span></button></a>
+	<a href="/user/profile"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;margin-left: 26%;"><span>My Profile</span></button></a>
 	<br>
 
-	<a href="/"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>View Transaction History </span></button></a>
+	<a href="/user/opinions"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>My Opinions </span></button></a>
+	<br>
+
+	<a href="/user/transaactions"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>My Transaction History </span></button></a>
 	<br>
 
 @endsection
