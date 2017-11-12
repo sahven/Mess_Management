@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class Pricing extends Model
 {
+    
     public function showall($request){
 
     	$plan = $request['planid'];

@@ -18,4 +18,7 @@
 	<a href="/caterer/menu/menu"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>Manage Menu </span></button></a>
 	<br>
 
+	<a href="/caterer/product"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>Add a new Product </span></button></a>
+	<br>
+
 @endsection

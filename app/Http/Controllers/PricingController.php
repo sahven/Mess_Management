@@ -38,7 +38,8 @@ class PricingController extends Controller
 
     	$price = new Pricing;
     	$price->change(request()->all());
-    	return redirect('/caterer/pricing/viewresult');
+        $all = $price->showall(request()->all());
+    	return view('/caterer/pricing/viewresult',compact('all'));
     	
     }
 }

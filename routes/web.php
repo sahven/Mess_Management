@@ -70,7 +70,23 @@ Route::get('/caterer/menu/menu','MenuController@index');
 
 Route::get('/caterer/menu/view','MenuController@view');
 
-Route::get('/caterer/menu/change','MenuController@change');
+Route::get('/caterer/menu/modify','MenuController@modify');
+
+Route::get('/caterer/menu/add','MenuController@add');
+
+Route::get('/caterer/menu/delete','MenuController@delete');
+
+Route::post('/caterer/menu/add','MenuController@insert');
+
+Route::post('/caterer/menu/delete','MenuController@remove');
+
+
+// Caterer_product
+
+Route::get('/caterer/product','ProductController@index');
+
+Route::post('/caterer/product','ProductController@add');
+
 
 // User
 
