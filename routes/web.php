@@ -99,3 +99,4 @@ Route::get('/user/opinion','DinerController@viewopinion');
 Route::get('/user/transaction','DinerController@transaction');
 
 Route::post('/user/opinion','DinerController@add');
+

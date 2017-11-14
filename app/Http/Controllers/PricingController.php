@@ -17,6 +17,7 @@ class PricingController extends Controller
     public function view(){
 
     	return view('/caterer/pricing/view');
+
     
     }
 
@@ -40,6 +41,7 @@ class PricingController extends Controller
     	$price->change(request()->all());
         $all = $price->showall(request()->all());
     	return view('/caterer/pricing/viewresult',compact('all'));
+
     	
     }
 }

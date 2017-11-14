@@ -1,6 +1,7 @@
 @extends('/caterer/master')
 
 @section('title')
+
 	Pricing Scheme
 @endsection
 
@@ -27,3 +28,4 @@
 
 @endsection
 </div>
+
