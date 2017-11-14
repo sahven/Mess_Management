@@ -23,8 +23,19 @@ class DinerController extends Controller
 
     }
 
-    public function opinion(){
+    public function viewopinion(){
 
+    	$diner = new Diner;
+    	$all = $diner->opinions();
+    	return view('/user/opinion',compact('all'));
 
+    }
+
+    public function add(){
+
+    	$diner = new Diner;
+    	$diner->addopinion(request()->all());
+    	$all = $diner->opinions();
+    	return view('/user/opinion',compact('all'));
     }
 }

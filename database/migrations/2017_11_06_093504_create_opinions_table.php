@@ -17,8 +17,6 @@ class CreateOpinionsTable extends Migration
             create table Opinions (
                 Description text,
               Rating int,
-              Time datetime,
-              Date date,
               UserID int,
               ProductID int,
               CatererID int,

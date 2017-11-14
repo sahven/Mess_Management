@@ -94,6 +94,8 @@ Route::get('/user/home','DinerController@index');
 
 Route::get('/user/profile','DinerController@profile');
 
-Route::get('/user/opinion','DinerController@opinion');
+Route::get('/user/opinion','DinerController@viewopinion');
 
 Route::get('/user/transaction','DinerController@transaction');
+
+Route::post('/user/opinion','DinerController@add');

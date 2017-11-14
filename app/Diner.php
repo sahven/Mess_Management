@@ -21,5 +21,26 @@ class Diner extends Model
 
 		}
 
+		public function opinions(){
+
+			$all = DB::select("
+				select *
+				from Product natural join Opinions
+				where
+				UserID = ?
+				",array(1));
+
+			return $all;
+		
+		}
+
+		public function addopinion($request){
+
+			DB::insert("
+				insert into Opinions(UserID,CatererID,ProductID,Rating,Description)
+				values(?,?,?,?,?)
+				",array(1,$request['catererid'],$request['productid'],$request['rating'],$request['description']));
+		}
+
 		
 }
