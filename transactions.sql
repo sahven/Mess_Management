@@ -14,39 +14,42 @@ CREATE TABLE transactions(
         PRIMARY KEY (CatererID, Time, UserID)
 )
 
+delimiter //
 CREATE TRIGGER transaction_values 
 BEFORE INSERT  
-  ON transactions 
+  ON Transactions 
   FOR EACH ROW
-
 BEGIN
 
-SELECT 
-  Subscribes.PlanID into New.PlanID
+set new.PlanID =
+(SELECT 
+  Subscribes.PlanID
 FROM  
   Subscribes
 WHERE 
-   Subscribes.CatererID = New.CatererID AND
-   Subscribes.UserID = New.UserID 
+   Subscribes.CatererID = new.CatererID AND
+   Subscribes.UserID = new.UserID) ;
 
 
-SELECT 
-  Pricing.Price into New.Price 
+set new.Price =
+(SELECT 
+  Pricing.Price
 FROM 
   Pricing 
 WHERE 
-  Pricing.CatererID = New.CatererID AND
-  Pricing.PlanID = New.PlanID AND
+  Pricing.CatererID = new.CatererID AND
+  Pricing.PlanID = new.PlanID AND
   Pricing.TimingID = (select 
                         TimingID 
                     from 
                         Timing
                     where 
-                        TimingID.Day=DAYNAME(cast(NEW.Time as date)) AND
-                        TimingID.StartTime >= cast(NEW.Time as time) AND
-                        TimingID.EndTime <= cast(NEW.Time as time) AND
-                )
+                        Timing.Day=DAYNAME(cast(new.Time as date)) AND
+                        Timing.StartTime <= cast(new.Time as time) AND
+                        Timing.EndTime >= cast(new.Time as time)
+                ));
 
-END
+END //
+delimiter ;
 
         
