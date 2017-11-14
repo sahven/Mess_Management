@@ -12,7 +12,7 @@
 	<a href="/user/opinions"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>My Opinions </span></button></a>
 	<br>
 
-	<a href="/user/transaactions"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>My Transaction History </span></button></a>
+	<a href="/user/transactions"><button class="button" style="vertical-align:middle;width: 50%;margin-left: 26%;"><span>My Transaction History </span></button></a>
 	<br>
 
 @endsection

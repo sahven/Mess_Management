@@ -90,8 +90,10 @@ Route::post('/caterer/product','ProductController@add');
 
 // User
 
-Route::get('/user/home',function(){
+Route::get('/user/home','DinerController@index');
 
-	return view('/user/home');
+Route::get('/user/profile','DinerController@profile');
 
-});
+Route::get('/user/opinion','DinerController@opinion');
+
+Route::get('/user/transaction','DinerController@transaction');
