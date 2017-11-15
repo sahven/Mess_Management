@@ -16,7 +16,7 @@
 	    
 	    <label for="rollno">RollNo</label>
 	    
-	    <input type="number" class="form-control" id="rollno" placeholder="" name="rollno">
+	    <input type="number" class="form-control" id="rollno" placeholder="" name="rollno" required>
 	    
 	  </div>
 
@@ -24,7 +24,7 @@
 	    
 	    <label for="plan">PlanID</label>
 	    
-	    <input type="number" class="form-control" id="plan" placeholder="" name="planid">
+	    <input type="number" class="form-control" id="plan" placeholder="" name="planid" required>
 	    
 	  </div>
 

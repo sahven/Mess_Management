@@ -31,6 +31,13 @@ class SubscriptionController extends Controller
 
 	public function submit(){
 
+		$this->validate(request(),[
+
+			'rollno' => 'required',
+			'planid' => 'required'
+
+			]);
+
 		$sub = new Subscription;
 		$sub->insert_into(request()->all());
 		return redirect('/caterer/subscriptions/view');

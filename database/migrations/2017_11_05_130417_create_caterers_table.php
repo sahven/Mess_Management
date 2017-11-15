@@ -18,6 +18,7 @@ class CreateCaterersTable extends Migration
             create table Caterer (
               CatererID int NOT NULL AUTO_INCREMENT,
               CatererName varchar(32) NOT NULL,
+              EmailID varchar(30) NOT NULL Unique,
               primary key (CatererID)
             )
             ");
