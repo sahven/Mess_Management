@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class PricingController extends Controller
 {
+    
+    public function __construct(){
+
+        $this->middleware('auth',['except'=>'viewresult']);
+
+    }
+
     public function index(){
 
     	return view('/caterer/pricing/pricing');

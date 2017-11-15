@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 
 use App\Diner;
 
+use App\Transaction;
+
 class DinerController extends Controller
 {
     
+    public function __construct(){
+
+        $this->middleware('auth');
+
+    }
+
     public function index(){
 
     	return view('/user/home');
@@ -37,5 +45,12 @@ class DinerController extends Controller
     	$diner->addopinion(request()->all());
     	$all = $diner->opinions();
     	return view('/user/opinion',compact('all'));
+    }
+
+    public function transaction(){
+
+        $tran = new Transaction;
+        $all = $tran->showuser(request()->all());
+        return view('/user/transaction',compact('all'));
     }
 }

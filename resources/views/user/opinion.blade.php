@@ -36,7 +36,6 @@
 
 	    </tbody>
 	  </table>
-	  <hr>
 	  <br>
 	  <br>
 	  <h3>Add a new Opinion</h3>

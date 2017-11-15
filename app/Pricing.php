@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\DB;
 class Pricing extends Model
 {
     
+    public function getid(){
+
+        $email = \Auth::user()->email;
+        $id = DB::select("
+            select CatererID 
+            from Caterer
+            where
+            EmailID = ?
+            ",array($email));
+        return $id[0]->CatererID;
+    }
+
     public function showall($request){
 
     	$plan = $request['planid'];
@@ -23,7 +35,7 @@ class Pricing extends Model
             PlanID = ?
 			and
 			CatererID = ?
-    		",array($plan,1));
+    		",array($plan,Pricing::getid()));
     	
     	return $show;
 
@@ -31,15 +43,34 @@ class Pricing extends Model
 
     public function change($request){
 
-        DB::update("
-            update Pricing
-            set Price = ?
-            where 
+        $check = DB::select("
+            select Price
+            from Pricing
+            where
             TimingID = ?
             and 
             PlanID = ?
             and
             CatererID = ?
-            ",array($request['price'],$request['timingid'],$request['planid'],1));
+            ",array($request['timingid'],$request['planid'],Pricing::getid()));
+        if ($check == NULL) {
+            DB::insert("
+                insert into Pricing(Price,TimingID,PlanID,CatererID)
+                values(?,?,?,?)
+                ",array($request['price'],$request['timingid'],$request['planid'],Pricing::getid()));
+        }
+        else{
+
+            DB::update("
+                update Pricing
+                set Price = ?
+                where 
+                TimingID = ?
+                and 
+                PlanID = ?
+                and
+                CatererID = ?
+                ",array($request['price'],$request['timingid'],$request['planid'],Pricing::getid()));
+        }
     }
 }

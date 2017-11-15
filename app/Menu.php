@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class Menu extends Model
 {
+    public function getid(){
+
+        $email = \Auth::user()->email;
+        
+        $id = DB::select("
+            select CatererID 
+            from Caterer
+            where
+            EmailID = ?
+            ",array($email));
+        return $id[0]->CatererID;
+    }
+
     public function showall(){
 
     	$all = DB::select("
@@ -22,7 +35,7 @@ class Menu extends Model
     	DB::insert("
 			insert into Menu(CatererID,ProductID,TimingID) 
 			values(?,?,?)
-    		",array(1,$request['productid'],$request['timingid']));
+    		",array(Menu::getid(),$request['productid'],$request['timingid']));
 
     }
 
@@ -36,6 +49,6 @@ class Menu extends Model
 			TimingID = ?
 			and
 			ProductID = ?
-    		",array(1,$request['timingid'],$request['productid']));
+    		",array(Menu::getid(),$request['timingid'],$request['productid']));
     }
 }

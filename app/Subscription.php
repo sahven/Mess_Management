@@ -8,6 +8,20 @@ use Illuminate\Support\Facades\DB;
 
 class Subscription extends Model
 {
+    
+    public function getid(){
+
+        $email = \Auth::user()->email;
+        $id = DB::select("
+            select CatererID 
+            from Caterer
+            where
+            EmailID = ?
+            ",array($email));
+        
+        return $id[0]->CatererID;
+    }
+
     public function showall(){
 
     	//Here you have to enter the CatererID of the corresponding caterer.
@@ -17,7 +31,7 @@ class Subscription extends Model
 			where Subscribes.UserID = Diner.UserID
             and
             Subscribes.CatererID = ?
-    		",array(1));
+    		",array(Subscription::getid()));
     	return $all;
 
     }
@@ -36,7 +50,7 @@ class Subscription extends Model
     	DB::insert("
 			insert into Subscribes(UserID,CatererID,PlanID)
 			values(?,?,?)
-    		",array($userid[0]->UserID,1,$request['planid']));
+    		",array($userid[0]->UserID,Subscription::getid(),$request['planid']));
     }
 
     public function delete_subs($request){
@@ -55,7 +69,7 @@ class Subscription extends Model
 			where UserID = ?
 			and
 			CatererID = ?
-    		",array($userid[0]->UserID,1));
+    		",array($userid[0]->UserID,Subscription::getid()));
     }
 
     public function verify_subs($request){
@@ -74,7 +88,7 @@ class Subscription extends Model
 			where UserID = ?
 			and
 			CatererID = ?
-    		",array($userid[0]->UserID,1));
+    		",array($userid[0]->UserID,Subscription::getid()));
 
     	return $count;
     }

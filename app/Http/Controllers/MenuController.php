@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+	public function __construct(){
+
+        $this->middleware('auth',['except'=>'view']);
+
+	}
     public function index(){
 
 		return view('/caterer/menu/menu');

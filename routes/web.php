@@ -11,15 +11,35 @@
 |
 */
 
+// Registration Route
+
+// For Diner
+
+Route::get('/registration/registeruser','RegistrationController@createuser');
+
+Route::post('/registration/registeruser','RegistrationController@storeuser');
+
+// For Caterer
+
+Route::get('/registration/registercaterer','RegistrationController@createcaterer');
+
+Route::post('/registration/registercaterer','RegistrationController@storecaterer');
+
+// Login Route
+
+Route::get('/login','SessionsController@index')->name('login');
+
+Route::post('/login','SessionsController@login');
+
+Route::get('/logout','SessionsController@destroy');
+
 // Caterer routes
 
 Route::get('/', function () {
     return view('/welcome');
 });
 
-Route::get('/caterer/home', function () {
-    return view('/caterer/home');
-});
+Route::get('/caterer/home','CatererController@index');
 
 // Caterer_Subscriptions
 
@@ -59,10 +79,13 @@ Route::post('/caterer/pricing/change','PricingController@update');
 // Caterer_Transaction
 // Yet to implement transaction table.
 
-Route::get('/caterer/transaction/transaction',function(){
+Route::get('/caterer/transaction/transaction','TransactionController@index');
 
-	return view('/caterer/transaction/transaction');
-});
+Route::get('/caterer/transaction/view','TransactionController@view');
+
+Route::get('/caterer/transaction/add','TransactionController@add');
+
+Route::post('/caterer/transaction/add','TransactionController@create');
 
 // Caterer_Menu
 
@@ -99,4 +122,7 @@ Route::get('/user/opinion','DinerController@viewopinion');
 Route::get('/user/transaction','DinerController@transaction');
 
 Route::post('/user/opinion','DinerController@add');
+
+
+
 
