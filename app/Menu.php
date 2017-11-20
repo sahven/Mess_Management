@@ -26,6 +26,7 @@ class Menu extends Model
     	$all = DB::select("
 			select *
 			from Timing natural join Menu natural join Product
+            order by TimingID
     		");
     	return $all;
     }

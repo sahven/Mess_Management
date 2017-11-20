@@ -22,45 +22,24 @@ class Diner extends Model
 
 	}
 
-		public function showall($request){
+	public function showall($request){
 
-			$all = DB::select("
-					select * 
-					from Diner
-					where
-					UserID = ?
-					",array(Diner::getid()));
-
-			return $all;
-
-		}
-
-		public function opinions(){
-
-			$all = DB::select("
-				select *
-				from Product natural join Opinions
+		$all = DB::select("
+				select * 
+				from Diner
 				where
 				UserID = ?
 				",array(Diner::getid()));
 
-			return $all;
-		
-		}
+		return $all;
 
-		public function addopinion($request){
+	}
 
-			DB::insert("
-				insert into Opinions(UserID,CatererID,ProductID,Rating,Description)
-				values(?,?,?,?,?)
-				",array(Diner::getid(),$request['catererid'],$request['productid'],$request['rating'],$request['description']));
-		}
+	public function insert($request){
 
-		public function insert($request){
-
-			DB::insert("
-				INSERT INTO `Diner`(`FirstName`, `LastName`, `RollNo`, `EmailID`, `PhoneNo`, `DOB`, `YearOfStudy`, `Course`) VALUES (?,?,?,?,?,?,?,?)
-				",array($request['firstname'],$request['lastname'],$request['rollno'],$request['emailid'],$request['phone'],$request['dob'],$request['year'],$request['course']));
-		}
+		DB::insert("
+			INSERT INTO `Diner`(`FirstName`, `LastName`, `RollNo`, `EmailID`, `PhoneNo`, `DOB`, `YearOfStudy`, `Course`) VALUES (?,?,?,?,?,?,?,?)
+			",array($request['firstname'],$request['lastname'],$request['rollno'],$request['emailid'],$request['phone'],$request['dob'],$request['year'],$request['course']));
+	}
 		
 }

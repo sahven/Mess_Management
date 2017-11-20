@@ -74,8 +74,13 @@ class SubscriptionController extends Controller
 
 		$sub = new Subscription;
 		$num = $sub->verify_subs(request()->all());
-		$num = $num[0];
-		return view('/caterer/subscriptions/verifyresult')->with(['num' => $num]);
+		if ($num == 1) {
+			return redirect('/caterer/transaction/add');
+		}
+		else{
+			
+			return redirect('/caterer/subscriptions/verifyresult');
+		}
 	}
 
 	public function verifyresult(){

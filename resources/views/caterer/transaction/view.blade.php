@@ -1,4 +1,4 @@
-@extends('/user/master')
+@extends('/caterer/master')
 
 @section('title')
 	Transactions
@@ -22,7 +22,7 @@
 
 	    <tbody>
 
-	    @foreach($all as $row)
+	    @foreach( $all as $row )
 		      
 		      <tr>
 		        <td> {{ $row->UserID }} </td>

@@ -81,7 +81,7 @@ Route::post('/caterer/pricing/change','PricingController@update');
 
 Route::get('/caterer/transaction/transaction','TransactionController@index');
 
-Route::get('/caterer/transaction/view','TransactionController@view');
+Route::get('/caterer/transaction/view','TransactionController@viewcaterer');
 
 Route::get('/caterer/transaction/add','TransactionController@add');
 
@@ -117,11 +117,11 @@ Route::get('/user/home','DinerController@index');
 
 Route::get('/user/profile','DinerController@profile');
 
-Route::get('/user/opinion','DinerController@viewopinion');
+Route::get('/user/opinion','OpinionController@viewopinion');
 
-Route::get('/user/transaction','DinerController@transaction');
+Route::get('/user/transaction','TransactionController@viewuser');
 
-Route::post('/user/opinion','DinerController@add');
+Route::post('/user/opinion','OpinionController@add');
 
 
 

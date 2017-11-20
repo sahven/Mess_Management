@@ -31,26 +31,4 @@ class DinerController extends Controller
 
     }
 
-    public function viewopinion(){
-
-    	$diner = new Diner;
-    	$all = $diner->opinions();
-    	return view('/user/opinion',compact('all'));
-
-    }
-
-    public function add(){
-
-    	$diner = new Diner;
-    	$diner->addopinion(request()->all());
-    	$all = $diner->opinions();
-    	return view('/user/opinion',compact('all'));
-    }
-
-    public function transaction(){
-
-        $tran = new Transaction;
-        $all = $tran->showuser(request()->all());
-        return view('/user/transaction',compact('all'));
-    }
 }

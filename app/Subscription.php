@@ -39,13 +39,13 @@ class Subscription extends Model
     public function insert_into($request){
 
     	$rollno = $request['rollno'];
-
+        
     	$userid = DB::select("
 			select UserID
 			from Diner
 			where RollNo = ?
     		",array($rollno));
-
+        
     	//Here, you have to enter the CatererID of the corresponding Caterer.
     	DB::insert("
 			insert into Subscribes(UserID,CatererID,PlanID)
@@ -83,12 +83,46 @@ class Subscription extends Model
     		",array($rollno));
 
     	//Here, you have to enter the CatererID of the corresponding Caterer.
-    	$count = DB::select("
-			select count(PlanID) as number from Subscribes
+    	$planid = DB::select("
+			select PlanID
+            from Subscribes
 			where UserID = ?
 			and
 			CatererID = ?
     		",array($userid[0]->UserID,Subscription::getid()));
+
+        if ($planid == NULL) {
+            $count = 0;
+        }
+        else{
+
+            $length = DB::select("
+                select PlanLength
+                from Plan 
+                where
+                PlanID = ?
+                ",array($planid[0]->PlanID));
+
+            $subon = DB::select("
+                select SubscribedOn
+                from
+                Subscribes
+                where UserID = ?
+                and
+                CatererID = ?
+                ",array($userid[0]->UserID,Subscription::getid()));
+            $today = $request['date'];
+
+            if ($length[0]->PlanLength < date_diff(date_create($today),(date_create($subon[0]->SubscribedOn)))->d) {
+                
+                $count = 0;
+
+            }
+            else{
+
+                $count = 1;
+            }
+        }
 
     	return $count;
     }

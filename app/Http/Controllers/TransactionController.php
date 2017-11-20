@@ -8,17 +8,31 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+
+    public function __construct(){
+
+        $this->middleware('auth');
+
+    }
+
     public function index(){
 
     	return view('/caterer/transaction/transaction');
 
     }
 
-    public function view(){
+    public function viewcaterer(){
 
     	$tran = new Transaction;
     	$all = $tran->showcaterer();
     	return view('/caterer/transaction/view',compact('all'));
+    }
+
+    public function viewuser(){
+
+        $tran = new Transaction;
+        $all = $tran->showuser(request()->all());
+        return view('/user/transaction',compact('all'));
     }
 
     public function add(){
@@ -31,6 +45,7 @@ class TransactionController extends Controller
     	$tran = new Transaction;
     	$tran->create(request()->all());
     	$all = $tran->showcaterer();
-    	return view('/caterer/transaction/view');
+    	return view('/caterer/transaction/view',compact('all'));
     }
+
 }
