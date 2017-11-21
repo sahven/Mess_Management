@@ -89,4 +89,12 @@ class SubscriptionController extends Controller
 
 	}
 
+	public function usersub(){
+
+		$sub = new Subscription;
+		$all = $sub->usersub(request()->all());
+		return view('/user/subscription',compact('all'));
+		
+	}
+
 }

@@ -119,6 +119,8 @@ Route::get('/user/profile','DinerController@profile');
 
 Route::get('/user/opinion','OpinionController@viewopinion');
 
+Route::get('/user/subscription','SubscriptionController@usersub');
+
 Route::get('/user/transaction','TransactionController@viewuser');
 
 Route::post('/user/opinion','OpinionController@add');

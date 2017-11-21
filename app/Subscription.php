@@ -22,6 +22,19 @@ class Subscription extends Model
         return $id[0]->CatererID;
     }
 
+    public function getuserid(){
+
+        $email = \Auth::user()->email;
+        $id = DB::select("
+            select UserID 
+            from Diner
+            where
+            EmailID = ?
+            ",array($email));
+        
+        return $id[0]->UserID;
+    }
+
     public function showall(){
 
     	//Here you have to enter the CatererID of the corresponding caterer.
@@ -125,5 +138,17 @@ class Subscription extends Model
         }
 
     	return $count;
+    }
+
+    public function usersub($request){
+
+        $all = DB::select("
+            select *
+            from Subscribes natural join Caterer
+            where
+            UserID = ?
+            ",array(Subscription::getuserid()));
+        return $all;
+
     }
 }

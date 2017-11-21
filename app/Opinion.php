@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class Opinion extends Model
 {
-    public function getid(){
+    public static function getid(){
 
     	$email = \Auth::user()->email;
     	$id = DB::select("
@@ -26,9 +26,7 @@ class Opinion extends Model
     	$all = DB::select("
     		select *
     		from Product natural join Opinions
-    		where
-    		UserID = ?
-    		",array(Opinion::getid()));
+    		");
 
     	return $all;
     
@@ -39,6 +37,6 @@ class Opinion extends Model
     	DB::insert("
     		insert into Opinions(UserID,CatererID,ProductID,Rating,Description)
     		values(?,?,?,?,?)
-    		",array(Diner::getid(),$request['catererid'],$request['productid'],$request['rating'],$request['description']));
+    		",array(Opinion::getid(),$request['catererid'],$request['productid'],$request['rating'],$request['description']));
     }
 }
